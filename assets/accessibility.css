@@ -1,0 +1,67 @@
+/* Keep browser keyboard behavior and system color adjustment enabled. */
+:where(button, input, textarea, select, a, [tabindex]):focus-visible,
+[data-testid="stTextInput"]:has(:focus-visible),
+[data-testid="stDateInput"]:has(:focus-visible),
+[data-testid="stChatInput"]:has(:focus-visible),
+[data-testid="stCheckbox"] label:has(input:focus-visible),
+[data-testid="stRadio"] label:has(input:focus-visible) {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 3px !important;
+}
+/* The chat container carries the focus ring; avoid a second ring on its textarea. */
+[data-testid="stChatInput"] textarea:focus-visible { outline: none !important; }
+[data-testid="stCaptionContainer"] { color: inherit; opacity: 1; }
+th, th [data-testid="stMarkdownContainer"] { color: inherit !important; }
+.stAlertContainer {
+  color: CanvasText !important; background-color: Canvas !important;
+  border: 1px solid currentColor;
+}
+[data-testid^="stAlertContent"] { color: CanvasText !important; }
+[data-testid="stDateInput"] [role="spinbutton"] { color: inherit !important; }
+[data-testid="stFileUploader"] span { color: inherit !important; }
+button[kind^="primary"] {
+  color: #fff !important; background-color: #0756a1 !important;
+  border-color: #0756a1 !important;
+}
+button { overflow-wrap: anywhere; }
+.studymate-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+.studymate-skip {
+  position: fixed; left: 1rem; top: -10rem; z-index: 1000000;
+  background: white; color: #003c80; padding: .75rem 1rem; border: 2px solid currentColor;
+}
+.studymate-skip:focus { top: .5rem; }
+@media (forced-colors: active) {
+  :root { color-scheme: light dark; }
+  [data-testid="stApp"], [data-testid="stMain"], [data-testid="stSidebar"],
+  [data-testid="stHeader"], [data-baseweb="popover"] {
+    background: Canvas !important; color: CanvasText !important;
+  }
+  button, input, textarea, select, [role="combobox"] {
+    border: 1px solid ButtonText !important;
+    forced-color-adjust: auto !important;
+  }
+  button[kind^="primary"] {
+    background-color: ButtonFace !important; color: ButtonText !important;
+    border-color: ButtonText !important;
+  }
+  a { color: LinkText !important; text-decoration: underline; }
+  :where(button, input, textarea, select, a, [tabindex]):focus-visible,
+  [data-testid="stTextInput"]:has(:focus-visible),
+  [data-testid="stDateInput"]:has(:focus-visible),
+  [data-testid="stChatInput"]:has(:focus-visible),
+  [data-testid="stCheckbox"] label:has(input:focus-visible),
+  [data-testid="stRadio"] label:has(input:focus-visible) {
+    outline-color: Highlight !important;
+  }
+  [data-baseweb="checkbox"] > div:first-child,
+  [data-baseweb="radio"] > div:first-child {
+    border: 2px solid CanvasText !important;
+  }
+  [data-testid="stContainer"], table, th, td {
+    border-color: CanvasText !important;
+  }
+  .studymate-skip { background: Canvas; color: LinkText; }
+}
